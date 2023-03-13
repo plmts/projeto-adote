@@ -5,6 +5,7 @@ from django.contrib.messages import constants
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 def cadastro(request):
     if request.user.is_authenticated:
@@ -55,6 +56,7 @@ def logar(request):
       messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
       return render(request, 'login.html')
 
+@login_required
 def sair(request):
     logout(request)
     return redirect('/auth/login')
