@@ -15,4 +15,4 @@ class PedidoAdocao(models.Model):
     status = models.CharField(max_length=2, choices=choices_status, default='AG')
 
     def __str__(self):
-        return self.pet
+        return self.pet.nome
